@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body >
+
+    <div class="jumbotron" >
+
+    <div class="row content" style="margin-top:20px">
+        <div class="col-sm-4">
+<button (click)="getData()" class="btn btn-info">Send Requests</button><br><br><br>
+<table *ngIf="userDetail" >
+        <tbody *ngFor="let d of userDetail">
+            <tr *ngIf="email!=d.email">
+                <td><b>{{d.email}}</b></td>
+                <td><button  (click)="addFriend($event,d.email)" class="btn btn-primary">Add Friend</button></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="col-sm-4">
+<button (click)="friendRequest()" class="btn btn-info">FriendRequests</button><br><br><br>
+
+    <table *ngIf="requests"> 
+
+        <tr  *ngFor="let r of requests">
+            <td><b>{{r}}</b></td>
+            <td>
+                <button (click)="accept(r)" class="btn btn-success">Accept</button>
+            </td>
+            <td>
+                <button (click)="decline(r)" class="btn btn-danger">Decline</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="col-sm-4">
+    <button (click)="friends()" class="btn btn-info">Friends</button><br><br><br>
+    <table>
+        <tbody *ngFor="let f of friend">
+        <tr *ngIf="friend">
+            <td><b>{{f}}</b></td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+    </div>
+ 
+</div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<html>
+<body>
+<div class="container">
+    <div class="card text-white bg-primary">
+      <div class="card-body">
+        <h2 class="card-title">CapBook</h2>
+        <div class="card-header text-center"><h4>Create an Account</h4></div>
+      </div>
+	  <form (ngSubmit)="onSubmit(register)" #myForm="ngForm">
+        <div class="form-group">
+            <div class="form-inline">
+              <label for="firstName" class="mr-sm-4">First Name:</label>
+      <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="register.firstName" name="first" #firstRef="ngModel" placeholder="First name" required>
+        <div *ngIf="firstRef.errors &&(firstRef.dirty || firstRef.touched)">
+          <div [hidden]="!firstRef.errors.required">First Name should not be empty</div>
+         </div>
+         </div>
+         </div>
+         <div class="form-group">
+            <div class="form-inline">
+                <label for="lastName" class="mr-sm-4">Last Name:</label>
+      <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="register.lastName" name="last" #lastRef="ngModel" placeholder="Last name" required>
+      <div *ngIf="lastRef.errors && (lastRef.dirty || lastRef.touched)" >
+          <div [hidden]="!lastRef.errors.required">Last Name should not be empty</div>
+         </div>
+         </div>
+         </div>
+        <div class="form-group">
+            <div class="form-inline">
+           <label for="email" class="mr-sm-3">Email:</label>
+           &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+           <input type="email" class="form-control mb-2 mr-sm-2" placeholder="e-mail"  required [(ngModel)]="register.email" name="email" #eRef="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+           <div *ngIf="eRef.errors && (eRef.dirty || eRef.touched)">
+              <div [hidden]="!eRef.errors.required">Email should not be empty</div>
+              <div [hidden]="!eRef.errors.pattern">Incorrect email</div>
+             </div>
+           </div>
+         </div>
+         <div class="form-group">
+            <div class="form-inline">
+           <label for="password" class="mr-sm-3">Password:</label>
+           &nbsp;&nbsp;&nbsp;
+           <input type="password" class="form-control mb-2 mr-sm-2" placeholder="password" required [(ngModel)]="register.password" #passRef="ngModel" name="password" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@]).{8,}">
+           <div *ngIf="passRef.errors && (passRef.dirty || passRef.touched)">
+              <div [hidden]="!passRef.errors.required">Password should not be empty</div>
+              <div [hidden]="!passRef.errors.pattern">password should be min 8 characters</div>
+             </div>
+           </div>
+         </div>
+         <div class="form-group">
+            <div class="form-inline">
+           <label for="phoneNo" class="mr-sm-3">Mobile No:</label>
+           &nbsp;
+           <input type="number" name="phone" class="form-control mb-2 mr-sm-2" [(ngModel)]='register.phoneNumber' pattern="^[6-9]\d{9}$" required #idRef="ngModel" placeholder="mobile number">
+            <div *ngIf="idRef.errors &&(idRef.dirty || idRef.touched)">
+              <div [hidden]="!idRef.errors.required">Mobile No. should not be empty</div>
+              <div [hidden]="!idRef.errors.pattern">enter only 10 digits</div>
+             </div>
+           </div>
+         </div>
+		<div class="form-group">
+		   <div class="form-inline">
+             <label  class="mr-sm-3">Gender:</label>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="customRadio" name="gender" [(ngModel)]="register.gender" value="male" #genderRef="ngModel"  required> 
+                <label class="custom-control-label" for="customRadio">Male</label>
+             </div>
+             <div class="custom-control custom-radio custom-control-inline">
+               <input type="radio" class="custom-control-input" id="customRadio2" name="gender" [(ngModel)]="register.gender" value="female" #genderRef="ngModel"  required>
+               <label class="custom-control-label" for="customRadio2">Female</label>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <div *ngIf="genderRef.errors &&(genderRef.dirty || genderRef.touched)">
+                  <div [hidden]="!genderRef.errors.required">Field should not be empty</div>
+              </div>
+		  </div>
+    </div>
+		</div>
+        <div class="form-group">
+            <div class="form-inline">
+           <label for="dob" class="mr-sm-2">Date of Birth:</label>
+           <input type="date" class="form-control mb-2 mr-sm-2" placeholder="" required [(ngModel)]="register.dob" name="dob" #dobRef="ngModel">
+           <div *ngIf="dobRef.errors &&(dobRef.dirty || dobRef.touched)">
+              <div [hidden]="!dobRef.errors.required">Date should not be empty</div>
+           </div>
+         </div>
+        </div>
+        <div class="form-group"> 
+           <label class="mr-sm-2">Security Question:</label>
+           <input type="text" class="form-control mb-2 mr-sm-2" placeholder="What is your favourite movie?" required [(ngModel)]="register.sec_ques" name="security" #quesRef="ngModel">
+           <div *ngIf="quesRef.errors && (quesRef.dirty || quesRef.touched)">
+              <div [hidden]="!quesRef.errors.required">Question should be answered</div>
+           </div>
+         </div>
+		 <div class="d-inline btn" style="margin-left:230px;" >
+		<button  class="btn btn-success mb-2" [disabled]="!myForm.form.valid">Sign Up</button>
+		</div>
+	  </form>
+    </div>
+</div>
+</body>
+</html> 

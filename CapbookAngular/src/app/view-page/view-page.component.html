@@ -1,0 +1,53 @@
+
+<body style="background-color:thistle">
+<div *ngIf="status;else templateName">
+                <div class="jumbotron" style="background-color:skyblue" >
+                 <div class="container-fluid " style="height: 200px">
+                 <div class="row">
+                 <div class="col-sm-4" > 
+                <div *ngFor="let p of picture">
+                    <div *ngIf="email2==p.email">
+                 <img src="{{p.location}}" height="200" width="200" >
+                 </div>
+                </div>
+                 <div class="container text-left">
+                 <h3>{{email2}}</h3>
+                 </div>
+                
+                 </div>
+                 
+                 <div class="col-sm-8">
+                 <table class="table table-striped" align="center">
+                 <tr >
+                 <td ><h4> Date of Birth:</h4></td>
+                 <td ><h4>{{user.dob}}</h4></td>
+                 </tr>
+                 <tr>
+                 <td ><h4> Email Id:</h4></td>
+                 <td><h4> {{user.email}}</h4></td>
+                 </tr>
+                 <tr>
+                 <td ><h4> Mobile No.:</h4></td>
+                 <td ><h4> {{user.phoneNumber}}</h4></td>
+                 </tr>
+                 <tr>
+                 <td ><h4> Gender</h4></td>
+                 <td ><h4> {{user.gender}}</h4></td>
+                 </tr>
+                 </table>
+                 </div>
+                 </div>
+                 </div>
+                </div>
+                 
+                <div > 
+                 
+                </div>
+                <br>
+                
+    </div>
+    
+    <ng-template #templateName>
+        not friends
+    </ng-template>
+</body>
